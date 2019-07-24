@@ -1,4 +1,4 @@
-package com.telerikacademy.matching_brackets;
+package com.telerikacademy.matchingBrackets;
 
 import java.io.BufferedReader;
 import java.io.IOException;
