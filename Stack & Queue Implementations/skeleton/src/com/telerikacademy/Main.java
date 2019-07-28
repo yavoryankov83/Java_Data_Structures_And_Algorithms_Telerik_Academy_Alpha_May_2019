@@ -1,5 +1,10 @@
 package com.telerikacademy;
 
+import com.telerikacademy.queue_singly_linkedList_implementation.Queue;
+import com.telerikacademy.queue_singly_linkedList_implementation.QueueImpl;
+import com.telerikacademy.stack_singly_linkedList_implementation.Stack;
+import com.telerikacademy.stack_singly_linkedList_implementation.StackImpl;
+
 public class Main {
   public static void main(String[] args) {
     Stack<Integer> stack = new StackImpl<>();
