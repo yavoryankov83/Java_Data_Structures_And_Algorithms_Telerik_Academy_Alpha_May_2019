@@ -8,21 +8,22 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class MergeSort {
+public class MergeSort<T> {
   public static void main(String[] args) throws IOException {
     List<Integer> input = readInput();
-    sorted(input);
+    mergeSort(input);
     printInput(input);
   }
 
-  private static void sorted(List<Integer> input) {
-    mergeSort(input, 0, input.size() - 1);
+  private static <T extends Comparable<T>> void mergeSort(List<T> input) {
+    MergeSort.mergeSortAlgorithm(input, 0, input.size() - 1);
   }
 
-  private static <T extends Comparable<T>> void merge(List<T> input) {
-    int leftIndex = 0;
-    int rightIndex = input.size() - 1;
-    int middleIndex = input.size() / 2;
+  private static <T extends Comparable<T>> void merge(
+          List<T> input,
+          int leftIndex,
+          int middleIndex,
+          int rightIndex) {
 
     int leftHalveSize = middleIndex - leftIndex + 1;
     int rightHalveSize = rightIndex - middleIndex;
@@ -43,15 +44,11 @@ public class MergeSort {
     int initialIndexOfRightHalve = 0;
     int initialIndexOfMerged = leftIndex;
 
-    while (initialIndexOfLeftHalve < leftHalveSize && initialIndexOfRightHalve < rightHalveSize)
-    {
-      if (leftHalve.get(initialIndexOfLeftHalve).compareTo(rightHalve.get(initialIndexOfRightHalve)) <= 0)
-      {
+    while (initialIndexOfLeftHalve < leftHalveSize && initialIndexOfRightHalve < rightHalveSize) {
+      if (leftHalve.get(initialIndexOfLeftHalve).compareTo(rightHalve.get(initialIndexOfRightHalve)) <= 0) {
         input.set(initialIndexOfMerged, leftHalve.get(initialIndexOfLeftHalve));
         initialIndexOfLeftHalve++;
-      }
-      else
-      {
+      } else {
         input.set(initialIndexOfMerged, rightHalve.get(initialIndexOfRightHalve));
         initialIndexOfRightHalve++;
       }
@@ -59,34 +56,31 @@ public class MergeSort {
     }
 
     //copy remaining elements in left halve
-    while (initialIndexOfLeftHalve < leftHalveSize)
-    {
+    while (initialIndexOfLeftHalve < leftHalveSize) {
       input.set(initialIndexOfMerged, leftHalve.get(initialIndexOfLeftHalve));
       initialIndexOfLeftHalve++;
       initialIndexOfMerged++;
     }
 
     //copy remaining elements in right halve
-    while (initialIndexOfRightHalve < rightHalveSize)
-    {
+    while (initialIndexOfRightHalve < rightHalveSize) {
       input.set(initialIndexOfMerged, rightHalve.get(initialIndexOfRightHalve));
       initialIndexOfRightHalve++;
       initialIndexOfMerged++;
     }
   }
 
-  private static <T extends Comparable<T>> void mergeSort(List<T> input, int leftIndex, int rightIndex){
-    if (leftIndex < rightIndex)
-    {
+  private static <T extends Comparable<T>> void mergeSortAlgorithm(List<T> input, int leftIndex, int rightIndex) {
+    if (leftIndex < rightIndex) {
       // Find the middle point
-      int middleIndex = (leftIndex + rightIndex)/2;
+      int middleIndex = (leftIndex + rightIndex) / 2;
 
       // Sort first and second halves
-      mergeSort(input, leftIndex, middleIndex);
-      mergeSort(input , middleIndex+1, rightIndex);
+      mergeSortAlgorithm(input, leftIndex, middleIndex);
+      mergeSortAlgorithm(input, middleIndex + 1, rightIndex);
 
       // Merge the sorted halves
-      merge(input);
+      merge(input, leftIndex, middleIndex, rightIndex);
     }
   }
 

@@ -17,7 +17,7 @@ public class SelectionSort {
     BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     List<Integer> nums = Arrays
             .stream(reader.readLine()
-            .split("\\s+"))
+                    .split("\\s+"))
             .map(Integer::parseInt)
             .collect(Collectors.toList());
 
@@ -31,7 +31,7 @@ public class SelectionSort {
       for (int j = i + 1; j < input.size(); j++) {
         T next = input.get(j);
         T minValue = input.get(index);
-        if (next.compareTo(minValue) < 0){
+        if (next.compareTo(minValue) < 0) {
           index = j;
           swap(i, j, input);
         }
