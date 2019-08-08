@@ -14,11 +14,11 @@ public class NextGreaterElement {
     List<Integer> nums2 = new ArrayList<>();
 
     stringTokenizer = new StringTokenizer(reader.readLine(), ",", false);
-    while (stringTokenizer.hasMoreTokens()){
+    while (stringTokenizer.hasMoreTokens()) {
       nums1.add(Integer.parseInt(stringTokenizer.nextToken()));
     }
     stringTokenizer = new StringTokenizer(reader.readLine(), ",", false);
-    while (stringTokenizer.hasMoreTokens()){
+    while (stringTokenizer.hasMoreTokens()) {
       nums2.add(Integer.parseInt(stringTokenizer.nextToken()));
     }
 
