@@ -3,6 +3,8 @@ package largest_surface;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.StringTokenizer;
 
 public class LargestSurface {
@@ -14,9 +16,11 @@ public class LargestSurface {
 
   public static void main(String[] args) throws IOException {
     BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-    stringTokenizer = new StringTokenizer(reader.readLine(), " ", false);
-    int rows = Integer.parseInt(stringTokenizer.nextToken());
-    int cols = Integer.parseInt(stringTokenizer.nextToken());
+    List<Integer> result = new ArrayList<>();
+    String[] rowCol = reader.readLine().split(" ");
+
+    int rows = Integer.parseInt(rowCol[0]);
+    int cols = Integer.parseInt(rowCol[1]);
     matrix = new int[rows][cols];
 
     for (int row = 0; row < rows; row++) {

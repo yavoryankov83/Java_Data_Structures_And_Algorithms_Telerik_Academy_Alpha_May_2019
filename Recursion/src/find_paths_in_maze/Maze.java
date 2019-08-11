@@ -85,25 +85,25 @@ public class Maze {
   }
 
   private static int findALLPaths(int row, int col, char[][] maze){
-    int counter = 0;
     if (!isInRange(row, col, maze)){
-      return counter;
+      return 0;
     }
 
     if (maze[row][col] == WALL){
-      return counter;
+      return 0;
     }
     if (maze[row][col] == EXIT){
       printMaze(maze);
       System.out.println();
-      return ++counter;
+      return 1;
     }
     if (maze[row][col] == VISITED){
-      return counter;
+      return 0;
     }
 
     maze[row][col] = VISITED;
 
+    int counter = 0;
     counter += findALLPaths(row - 1, col, maze);
     counter += findALLPaths(row + 1, col, maze);
     counter += findALLPaths(row, col - 1, maze);
